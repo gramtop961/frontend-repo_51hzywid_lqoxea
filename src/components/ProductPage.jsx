@@ -9,29 +9,16 @@ const DEFAULT_PRODUCT = {
 }
 
 const reviews = [
-  {
-    name: 'Luca M.',
-    rating: 5,
-    text: 'Balance is unreal. Sticky tama and crisp bevel make stalls effortless.'
-  },
-  {
-    name: 'Ava R.',
-    rating: 5,
-    text: 'Gorgeous finish and feels premium in hand. Worth every dollar.'
-  },
-  {
-    name: 'Noah T.',
-    rating: 4,
-    text: 'Great control. Packaging was nice too. Would buy again.'
-  }
+  { name: 'Luca M.', rating: 5, text: 'Balance is unreal. Sticky tama and crisp bevel make stalls effortless.' },
+  { name: 'Ava R.', rating: 5, text: 'Gorgeous finish and feels premium in hand. Worth every dollar.' },
+  { name: 'Noah T.', rating: 4, text: 'Great control. Packaging was nice too. Would buy again.' },
 ]
 
-export default function ProductPage({ product = DEFAULT_PRODUCT, onBack }) {
+export default function ProductPage({ product = DEFAULT_PRODUCT, onBack, onAddToCart }) {
   const [showDiscount, setShowDiscount] = useState(false)
   const [discountApplied, setDiscountApplied] = useState(false)
 
   useEffect(() => {
-    // Show discount popup shortly after the page loads
     const t = setTimeout(() => setShowDiscount(true), 600)
     return () => clearTimeout(t)
   }, [])
@@ -75,7 +62,10 @@ export default function ProductPage({ product = DEFAULT_PRODUCT, onBack }) {
             )}
 
             <div className="mt-8">
-              <button className="w-full md:w-auto inline-flex items-center justify-center rounded-full bg-gray-900 text-white px-6 py-3 text-sm font-semibold shadow hover:shadow-md">
+              <button
+                onClick={() => onAddToCart?.({ title: product.title, image: product.image, price: finalPrice, qty: 1 })}
+                className="w-full md:w-auto inline-flex items-center justify-center rounded-full bg-gray-900 text-white px-6 py-3 text-sm font-semibold shadow hover:shadow-md"
+              >
                 Add to Cart
               </button>
             </div>

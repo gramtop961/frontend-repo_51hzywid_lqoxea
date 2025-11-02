@@ -80,6 +80,20 @@ export default function Hero() {
             >
               <p className="text-sm font-semibold">Hand-finished maple + beech</p>
             </motion.div>
+
+            {/* Extra: Google-found kendama image (Wikimedia hosted) */}
+            <motion.div
+              className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/3/31/Kendama.jpg"
+                alt="Kendama (credit: Wikimedia Commons)"
+                className="w-28 h-28 object-cover"
+              />
+            </motion.div>
           </motion.div>
         </div>
       </div>
