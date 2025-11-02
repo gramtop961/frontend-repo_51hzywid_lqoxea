@@ -19,7 +19,7 @@ const photos = [
   },
 ]
 
-export default function Gallery() {
+export default function Gallery({ onBuy }) {
   return (
     <section id="products" className="relative bg-white">
       <div className="max-w-6xl mx-auto px-6 py-20">
@@ -50,12 +50,12 @@ export default function Gallery() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition" />
               <figcaption className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
                 <span className="text-white font-semibold drop-shadow">{p.caption}</span>
-                <a
-                  href="#cta"
+                <button
+                  onClick={() => onBuy?.({ title: p.caption, image: p.src, price: 40 })}
                   className="rounded-full bg-white/90 text-gray-900 text-sm font-semibold px-3 py-1.5 shadow hover:bg-white"
                 >
                   Buy
-                </a>
+                </button>
               </figcaption>
             </motion.figure>
           ))}
